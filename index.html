@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 防止 favicon.ico 404 錯誤 -->
+    <link rel="icon" href="data:,">
+    <title>Sketch</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+  </head>
+
+  <body>
+    <div id="sidebar">
+      <h2 class="menu-title">遊戲選單</h2>
+      <nav>
+        <ul>
+          <li><a href="javascript:location.reload()">重新開始</a></li>
+          <li><a href="#" onclick="showOverlay('tutorial'); return false;">遊戲教學</a></li>
+          <li><a href="#" onclick="showOverlay('settings'); return false;">遊戲設定</a></li>
+          <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.2); margin: 15px 0;">
+          <li style="font-size: 14px; color: #bdc3c7; margin-bottom: 10px;">關卡列表</li>
+          <li><a href="#" onclick="window.navigateToLevel(0); return false;">0224 練習</a></li>
+          <li><a href="#" onclick="window.navigateToLevel(1); return false;">0303 練習</a></li>
+          <li><a href="#" onclick="window.navigateToLevel(2); return false;">0310 練習</a></li>
+          <li><a href="#" onclick="window.navigateToLevel(3); return false;">0317 練習</a></li>
+          <li><a href="#" onclick="window.navigateToLevel(4); return false;">0324 練習</a></li>
+          <li><a href="#" onclick="window.navigateToLevel(5); return false;">0407 練習</a></li>
+          <li><a href="#" onclick="window.navigateToLevel(6); return false;">0414練習</a></li>
+          <li><a href="#" onclick="window.navigateToLevel(7); return false;">0422 練習</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- 遊戲教學面板 -->
+    <div id="tutorial-overlay" class="custom-overlay">
+      <div class="overlay-content">
+        <h2>🎮 遊戲教學</h2>
+        <p>1. 點擊地圖上的<b>房子</b>，羊駝會自動走過去。</p>
+        <p>2. 到達目的地後，會自動開啟該關卡的網頁。</p>
+        <p>3. 點擊畫面任意空白處可關閉網頁視窗。</p>
+        <p>4. 滑鼠移到左側邊緣可呼叫主選單。</p>
+        <button class="close-btn" onclick="hideOverlay('tutorial')">我知道了</button>
+      </div>
+    </div>
+
+    <!-- 設定面板 -->
+    <div id="settings-overlay" class="custom-overlay">
+      <div class="overlay-content">
+        <h2>⚙️ 遊戲設定</h2>
+        <div class="setting-item">
+          <label>背景音樂</label>
+          <input type="range" min="0" max="100" value="50" oninput="window.setVolume(this.value)">
+        </div>
+        <div class="setting-item">
+          <label>移動速度</label>
+          <select onchange="window.setPlayerSpeed(this.value)">
+            <option value="0.03">正常</option>
+            <option value="0.06">快速</option>
+            <option value="0.1">極速</option>
+          </select>
+        </div>
+        <div class="setting-item">
+          <label>天氣</label>
+          <select onchange="window.setWeather(this.value)">
+            <option value="day">白天</option>
+            <option value="night">晚上</option>
+            <option value="rain">下雨</option>
+          </select>
+        </div>
+        <button class="close-btn" onclick="hideOverlay('settings')">儲存並關閉</button>
+      </div>
+    </div>
+
+    <script>
+      function showOverlay(id) {
+        document.getElementById(id + '-overlay').style.display = 'flex';
+      }
+      function hideOverlay(id) {
+        document.getElementById(id + '-overlay').style.display = 'none';
+      }
+    </script>
+    <script src="sketch.js"></script>
+  </body>
+</html>

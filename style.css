@@ -1,0 +1,94 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+}
+
+#sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 180px; /* 縮減選單寬度 */
+  height: 100vh;
+  background-color: rgba(44, 62, 80, 0.7); /* 半透明背景 */
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 2000;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), background-color 0.3s;
+  overflow-y: auto; /* 內容過多時可滾動 */
+  transform: translateX(-165px); /* 隱藏大部分，留 15px 邊緣提示 */
+  border-right: 4px solid rgba(52, 152, 219, 0.5);
+}
+
+#sidebar:hover {
+  transform: translateX(0); /* 滑鼠移入時滑出 */
+  background-color: rgba(44, 62, 80, 0.95); /* 移入時稍微加深顏色方便閱讀 */
+}
+
+.menu-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 10px;
+}
+
+#sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+#sidebar li { margin-bottom: 15px; }
+
+#sidebar a {
+  color: #ecf0f1;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+#sidebar a:hover { color: #3498db; }
+
+/* 全螢幕遮罩樣式 */
+.custom-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 3000;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+}
+
+.overlay-content {
+  background: #2c3e50;
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  border: 3px solid #3498db;
+  max-width: 400px;
+  width: 80%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.setting-item {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  margin-top: 20px;
+  padding: 10px 25px;
+  background: #3498db;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
